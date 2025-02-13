@@ -2,26 +2,28 @@ package menu.options;
 
 import menu.MenuOption;
 import controllers.BookController;
+
 import java.util.Scanner;
 
 public class FilterBooksMenuOption implements MenuOption {
-    private BookController bookController;
+	private final BookController bookController;
 
-    public FilterBooksMenuOption(BookController bookController) {
-        this.bookController = bookController;
-    }
+	public FilterBooksMenuOption(BookController bookController) {
+		this.bookController = bookController;
+	}
 
-    @Override
-    public void execute() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter status (available/taken): ");
-        String status = scanner.nextLine();
+	@Override
+	public void execute() {
+		Scanner scanner = new Scanner(System.in);
 
-        bookController.filterBooksByStatus(status);
-    }
+		System.out.print("Enter status (available/taken): ");
+		String status = scanner.nextLine().toLowerCase();
 
-    @Override
-    public String getDescription() {
-        return "Filter books by status (available/taken)";
-    }
+		bookController.filterBooksByStatus(status);
+	}
+
+	@Override
+	public String getDescription() {
+		return "Filter books by status (available/taken)";
+	}
 }
