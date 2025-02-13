@@ -1,4 +1,6 @@
-package models;
+package models.workers;
+
+import models.Employee;
 
 public class Technician extends Employee {
 	public Technician(int id, String name, String surname, double salary) {
